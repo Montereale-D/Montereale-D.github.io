@@ -2,23 +2,23 @@ vCard - Personal Portfolio
 
 # sidebar
 
-alt = Richard hanrick
-Richard hanrick
-Web developer
+alt = Andrea Montereale
+Andrea Montereale
+Game/XR developer
 
 Show Contacts
 
 Email
-richard@example.com
+andreamontereale@gmail.com
 
 Phone
-+1 (213) 352-2795
++39 3888569826
 
 Birthday
-June 23, 1982
+October 23, 1998
 
 Location
-Sacramento, California, USA
+Milan, Italy
 
 # navbar
 

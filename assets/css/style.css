@@ -317,7 +317,7 @@ main {
 .sidebar {
   margin-bottom: 15px;
   max-height: 112px;
-  overflow: hidden;
+  overflow: visible;
   transition: var(--transition-2);
 }
 
@@ -387,8 +387,8 @@ main {
 .info_more-btn span { display: none; }
 
 .sidebar-info_more {
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
   transition: var(--transition-2);
 }
 
@@ -431,7 +431,7 @@ main {
 
 .social-list {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 15px;
   padding-bottom: 4px;
@@ -1329,7 +1329,7 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   .sidebar {
-    max-height: 180px;
+    max-height: 800px;
     margin-bottom: 30px;
   }
 
@@ -1827,6 +1827,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     position: sticky;
     top: 60px;
     max-height: max-content;
+    min-width: 350px;
     height: 100%;
     margin-bottom: 0;
     padding-top: 60px;
