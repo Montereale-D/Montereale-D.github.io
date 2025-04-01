@@ -316,8 +316,8 @@ main {
 
 .sidebar {
   margin-bottom: 15px;
-  max-height: 112px;
-  overflow: visible;
+  max-height: 70em;
+  overflow: hidden;
   transition: var(--transition-2);
 }
 
@@ -329,6 +329,7 @@ main {
   justify-content: flex-start;
   align-items: center;
   gap: 15px;
+  flex-direction: column;
 }
 
 .avatar-box {
