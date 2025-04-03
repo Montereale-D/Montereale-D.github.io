@@ -54,7 +54,7 @@ for (let i = 0; i < testimonialsItem.length; i++) {
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
+const selectValue = document.querySelector("[data-select-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
 select.addEventListener("click", function () { elementToggleFunc(this); });
@@ -75,20 +75,18 @@ for (let i = 0; i < selectItems.length; i++) {
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
 const filterFunc = function (selectedValue) {
+    for (let i = 0; i < filterItems.length; i++) {
+        let item = filterItems[i];
 
-  for (let i = 0; i < filterItems.length; i++) {
-
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
+        if (selectedValue === "all" || selectedValue === item.dataset.category) {
+            item.classList.add("active");
+            item.style.display = "flex"; // Mostra l'elemento correttamente
+        } else {
+            item.classList.remove("active");
+            item.style.display = "none"; // Nasconde l'elemento
+        }
     }
-
-  }
-
-}
+};
 
 // add event in all filter button items for large screen
 let lastClickedBtn = filterBtn[0];
