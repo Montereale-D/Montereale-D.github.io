@@ -78,7 +78,8 @@ const filterFunc = function (selectedValue) {
     for (let i = 0; i < filterItems.length; i++) {
         let item = filterItems[i];
 
-        if (selectedValue === "all" || selectedValue === item.dataset.category) {
+        // Controlla se la categoria selezionata è "all" o se è presente tra le categorie multiple dell'elemento
+        if (selectedValue === "all" || item.dataset.category.includes(selectedValue)) {
             item.classList.add("active");
             item.style.display = "flex"; // Mostra l'elemento correttamente
         } else {
@@ -87,6 +88,7 @@ const filterFunc = function (selectedValue) {
         }
     }
 };
+
 
 // add event in all filter button items for large screen
 let lastClickedBtn = filterBtn[0];
@@ -134,20 +136,28 @@ for (let i = 0; i < formInputs.length; i++) {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-
+// funzione per attivare una pagina e aggiornare il menu
+const activatePage = (pageName) => {
     for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
+        const isTarget = pages[i].dataset.page === pageName;
+        pages[i].classList.toggle("active", isTarget);
+        navigationLinks[i].classList.toggle("active", isTarget);
     }
+    window.scrollTo(0, 0);
+};
 
-  });
+// gestore dei click sulla navbar
+for (let i = 0; i < navigationLinks.length; i++) {
+    navigationLinks[i].addEventListener("click", function () {
+        const targetPage = this.innerHTML.toLowerCase();
+        window.location.hash = targetPage; // aggiorna l'URL con l'hash
+        activatePage(targetPage);
+    });
 }
+
+// attiva la pagina corretta in base all'URL all'avvio
+window.addEventListener("DOMContentLoaded", () => {
+    const pageFromHash = window.location.hash.replace("#", "");
+    const defaultPage = navigationLinks[0].innerHTML.toLowerCase();
+    activatePage(pageFromHash || defaultPage);
+});
