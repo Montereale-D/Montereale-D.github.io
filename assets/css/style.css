@@ -1245,7 +1245,14 @@ main {
     margin-bottom: 100px;
   }
 
-
+    .policy-links {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 15px;
+        gap: 12px;
+        font-size: 0.85rem;
+        background-color: transparent; /* oppure un colore se serve */
+    }
 
   /**
    * #SIDEBAR
